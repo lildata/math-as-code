@@ -1,16 +1,6 @@
-# math-as-code
+# math-as-code (in Clojure !)
 
->[Chinese translation (中文版)](./README-zh.md)
-
-This is a reference to ease developers into mathematical notation by showing comparisons with JavaScript code.
-
-Motivation: Academic papers can be intimidating for self-taught game and graphics programmers. :) 
-
-This guide is not yet finished. If you see errors or want to contribute, please [open a ticket](https://github.com/Jam3/math-as-code/issues) or send a PR.
-
-> **Note**: For brevity, some code examples make use of [npm packages](https://www.npmjs.com/). You can refer to their GitHub repos for implementation details.
-
-
+This is a reference to ease developers into mathematical notation by showing comparisons with Clojure code.
 
 # foreword
 
@@ -73,22 +63,26 @@ There are a number of symbols resembling the equals sign `=`. Here are a few com
 - `≈` is for approximately equal to (`π ≈ 3.14159`)
 - `:=` is for definition (A is defined as B)
 
-In JavaScript:
+In Clojure:
 
-```js
-// equality
-2 === 3
+```clj
+;; = equality
+(== 2 3 4 5)
 
-// inequality
-2 !== 3
+;; ≠ inequality
+(not (== 2 3 4 5))
 
-// approximately equal
-almostEqual(Math.PI, 3.14159, 1e-5)
-
-function almostEqual(a, b, epsilon) {
-  return Math.abs(a - b) <= epsilon
-}
+;; ≈ approximately equal
+(clojure.algo.generic/approx= x y epsilon)
 ```
+
+
+
+
+
+
+
+
 
 You might see the `:=`, `=:` and `=` symbols being used for *definition*.<sup>[1]</sup>
 
