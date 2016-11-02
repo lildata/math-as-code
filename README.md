@@ -10,6 +10,10 @@ For a more complete list, refer to [Wikipedia - List of Mathematical Symbols](ht
 
 For simplicity, many of the code examples here operate on floating point values and are not numerically robust. For more details on why this may be a problem, see [Robust Arithmetic Notes](https://github.com/mikolalysenko/robust-arithmetic-notes) by Mikola Lysenko.
 
+# useful libraries 
+
+* clojure.algo.generic https://clojure.github.io/algo.generic/index.html
+
 # contents
 
 - [variable name conventions](#variable-name-conventions)
