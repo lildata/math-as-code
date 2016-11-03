@@ -58,6 +58,9 @@ There are a variety of naming conventions depending on the context and field of 
 
 This will also be the format of this guide.
 
+# Done !
+
+
 ## equals symbols
 
 There are a number of symbols resembling the equals sign `=`. Here are a few common examples:
@@ -82,7 +85,7 @@ In Clojure:
 
 
 
-
+# TODO ;-)
 
 
 
@@ -95,6 +98,15 @@ For example, the following defines *x* to be another name for 2*kj*.
 ![equals1](http://latex.codecogs.com/svg.latex?x%20%3A%3D%202kj)
 
 <!-- x := 2kj -->
+
+http://clojure.org/reference/vars
+
+In clojure `def` creates (and interns) a var
+
+```clj
+(def x (* 2 k j)
+```
+
 
 In JavaScript, we might use `var` to *define* our variables and provide aliases:
 
@@ -130,13 +142,17 @@ A square root operation is of the form:
 
 <!-- \left(\sqrt{x}\right)^2 = x -->
 
-In programming we use a `sqrt` function, like so: 
-
-```js
-var x = 9;
-console.log(Math.sqrt(x));
-//=> 3
+```clj
+(clojure.algo.generic.math-functions/sqr x)
 ```
+
+see also https://clojuredocs.org/clojure.core/defonce
+
+
+
+
+
+
 
 Complex numbers are expressions of the form ![complex](http://latex.codecogs.com/svg.latex?a&space;&plus;&space;ib), where ![a](http://latex.codecogs.com/svg.latex?a) is the real part and ![b](http://latex.codecogs.com/svg.latex?b) is the imaginary part. The imaginary number ![i](http://latex.codecogs.com/svg.latex?i) is defined as:
 
@@ -258,6 +274,14 @@ var j = [ 1, 0, 0 ]
 var d = dot(k, j)
 //=> 0
 ```
+
+a naive implementation in clojure 
+
+```clj
+(defn dot [u v]
+  (apply + (map * u v)))
+```
+
 
 The result `0` tells us our vectors are perpendicular. Here is a `dot` function for 3-component vectors:
 
