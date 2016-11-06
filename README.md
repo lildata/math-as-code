@@ -275,21 +275,21 @@ var d = dot(k, j)
 //=> 0
 ```
 
-a naive implementation in clojure 
+a naive implementation in clojure :
 
 ```clj
 (defn dot [u v]
   (apply + (map * u v)))
 ```
+using core.matrix https://mikera.github.io/core.matrix/doc/clojure.core.matrix.html#var-dot
 
-
-The result `0` tells us our vectors are perpendicular. Here is a `dot` function for 3-component vectors:
-
-```js
-function dot(a, b) {
-  return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
-}
+```clj
+(clojure.core.matrix/dot [0 1 0] [1 0 0])
+; 0.0
 ```
+
+The result `0` tells us our vectors are perpendicular. 
+
 
 #### cross product
 
@@ -299,37 +299,12 @@ The cross symbol `×` can be used to denote the [*cross product*](https://en.wik
 
 <!-- \mathbf{k}\times \mathbf{j} -->
 
-In code, it would look like this:
+Once again using core.matrix https://mikera.github.io/core.matrix/doc/clojure.core.matrix.html#var-cross
 
-```js
-var k = [ 0, 1, 0 ]
-var j = [ 1, 0, 0 ]
-
-var result = cross(k, j)
-//=> [ 0, 0, -1 ]
+```clj
+(clojure.core.matrix/cross [0 1 0] [1 0 0])
+; [0.0 0.0 -1.0]
 ```
-
-Here, we get `[ 0, 0, -1 ]`, which is perpendicular to both **k** and **j**.
-
-Our `cross` function:
-
-```js
-function cross(a, b) {
-  var ax = a[0], ay = a[1], az = a[2],
-    bx = b[0], by = b[1], bz = b[2]
-
-  var rx = ay * bz - az * by
-  var ry = az * bx - ax * bz
-  var rz = ax * by - ay * bx
-  return [ rx, ry, rz ]
-}
-```
-
-For other implementations of vector multiplication, cross product, and dot product:
-
-- [gl-vec3](https://github.com/stackgl/gl-vec3)
-- [gl-vec2](https://github.com/stackgl/gl-vec2)
-- [vectors](https://github.com/hughsk/vectors) - includes n-dimensional
 
 ## sigma 
 
@@ -481,23 +456,14 @@ Other implementations:
 
 For a matrix **A**, `|A|` means the [determinant](https://en.wikipedia.org/wiki/Determinant) of matrix **A**.
 
-Here is an example computing the determinant of a 2x2 matrix, represented by a flat array in column-major format.
+Here is an example computing the determinant of a 2x2 matrix using core.matrix and vectorz https://mikera.github.io/core.matrix/doc/clojure.core.matrix.html#var-det
 
-```js
-var determinant = require('gl-mat2/determinant')
+```clj
+(set-current-implementation :vectorz) ;; you need a core.matrix implementation that support det
 
-var matrix = [ 1, 0, 0, 1 ]
-var det = determinant(matrix)
-//=> 1
+(clojure.core.matrix/det [[1 0] [0 1]])
+;1.0
 ```
-
-Implementations:
-
-- [gl-mat4/determinant](https://github.com/stackgl/gl-mat4/blob/c2e2de728fe7eba592f74cd02266100cc21ec89a/determinant.js) - also see [gl-mat3](https://github.com/stackgl/gl-mat3) and [gl-mat2](https://github.com/stackgl/gl-mat2)
-- [ndarray-determinant](https://www.npmjs.com/package/ndarray-determinant)
-- [glsl-determinant](https://www.npmjs.com/package/glsl-determinant)
-- [robust-determinant](https://www.npmjs.com/package/robust-determinant)
-- [robust-determinant-2](https://www.npmjs.com/package/robust-determinant-2) and [robust-determinant-3](https://www.npmjs.com/package/robust-determinant-3), specifically for 2x2 and 3x3 matrices, respectively
 
 ## hat
 
